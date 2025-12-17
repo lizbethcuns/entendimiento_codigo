@@ -1,4 +1,6 @@
-# entendimiento_codigo´
+#objetivo de la tarea
+hay que generar 2 trayectorias cada una con 2 algoritmas diferentes en mi caso mi trayectoria principal es el LPA* y aparte udar en RRT para generar otros waitpoints y ver la diferencias entre el RRT CON EL lpa* Implementación de planificación con el algoritmo asignado por el docente con waypoints separados 0.5 metros y 1 metro.
+# entendimiento_codigo´ESTE CODIGO SE ENCUENTRA EN Global_Planner/f1tenth/f1tenth_map.py
 import os
 import cv2
 import csv
