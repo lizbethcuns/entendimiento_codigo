@@ -100,6 +100,63 @@ if __name__ == "__main__":
     start = world_to_map(x_start, y_start, resolution, origin)                     #-------------------------indices de una celda 
     goal = world_to_map(x_goal, y_goal, resolution, origin)
 
-    print(f"Start (map): {start}, Goal (map): {goal}")                
-    planner = SearchFactory()("a_star", start=start, goal=goal, env=env)
+    print(f"Start (map): {start}, Goal (map): {goal}")                         
+    planner = SearchFactory()("a_star", start=start, goal=goal, env=env)          #---------------se puede cambiar de planificador , en la carpeta Global_Planner/python_motion_planning/global_planner/graph_search(estan todos los algoritmos)
+#---para saber como poner ese nombre de "a_star", start=start, goal=goal, env=env , en la carpeta   Global_Planner/global_examples.py
+ # planner = search_factory("dijkstra", start=start, goal=goal, env=env)
+    # planner = search_factory("gbfs", start=start, goal=goal, env=env)
+    # planner = search_factory("theta_star", start=start, goal=goal, env=env)
+    # planner = search_factory("lazy_theta_star", start=start, goal=goal, env=env)
+    # planner = search_factory("s_theta_star", start=start, goal=goal, env=env)
+    # planner = search_factory("jps", start=start, goal=goal, env=env)
+    # planner = search_factory("d_star", start=start, goal=goal, env=env)
+    # planner = search_factory("lpa_star", start=start, goal=goal, env=env)
+    # planner = search_factory("d_star_lite", start=start, goal=goal, env=env)
+  # -------------------- PARA LA TAREA --------------------------------
+      '''
+    sample search
+    '''
+    # # build environment
+    # start = (18, 8)
+    # goal = (37, 18)
+    # env = Map(51, 31)
+    # env = Map(51, 31)
+    # obs_rect = [
+    #     [14, 12, 8, 2],
+    #     [18, 22, 8, 3],
+    #     [26, 7, 2, 12],
+    #     [32, 14, 10, 2]
+    # ]
+    # obs_circ = [
+    #     [7, 12, 3],
+    #     [46, 20, 2],
+    #     [15, 5, 2],
+    #     [37, 7, 3],
+    #     [37, 23, 3]
+    # ]
+    # env.update(obs_rect=obs_rect, obs_circ=obs_circ)
+
+    # # creat planner
+    # planner = search_factory("rrt", start=start, goal=goal, env=env)
+    # planner = search_factory("rrt_connect", start=start, goal=goal, env=env)
+    # planner = search_factory("rrt_star", start=start, goal=goal, env=env)
+    # planner = search_factory("informed_rrt", start=start, goal=goal, env=env)
+
+    # # animation
+    # planner.run()
+
+    # ======================================================== ESTA PARTE NOSE SI TAMBIEN SEA DE PONER EN LA TAREA SI ES QUE SEA NECESARIO
+
+    '''
+    evolutionary search
+    '''
+    # planner = search_factory("aco", start=start, goal=goal, env=env)
+    # planner = search_factory("pso", start=start, goal=goal, env=env)
+    # planner.run()
+  # -------------------- HASTA AQUI ES PARA LA TAREA --------------------------------
+
     planner.run()
+
+    cost, path, _ = planner.plan()               # ---------- me lo devuelve ya echo 
+    save_path_as_csv(path, "astar_path_real.csv", resolution, origin, map_bin.shape[0])             # ----------me crea el ccv con la rjta y se almacena en examples 
+    print("Ruta guardada como astar_path_real.csv")
